@@ -6,13 +6,17 @@
 <h2>@ViewBag.Title</h2>
 
 <div class="row">
-    @foreach (var comicBooks in Model)
+    @foreach (var comicBook in Model)
     {
         <div class="col-md-3">
-            <h4>@comicBooks.DisplayText</h4>
-            <img src="/Images/@comicBooks.CoverImageFileName"
-                    alt="@comicBooks.DisplayText"
-                    class="img-responsive" />
+            <h4>@Html.ActionLink(comicBook.DisplayText, "Detail",
+               new { id = comicBook.Id })</h4>
+            <a href="@Url.Action("Detail", new { id = comicBook.Id })">
+                <img src="/Images/@comicBook.CoverImageFileName"
+                     alt="@comicBook.DisplayText"
+                     class="img-responsive" />
+            </a>
+            
         </div>
     }
 </div>
